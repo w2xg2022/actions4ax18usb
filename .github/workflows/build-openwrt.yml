@@ -20,7 +20,7 @@ on:
         default: 'false'
 
 env:
-  REPO_URL: https://github.com/coolsnowwolf/lede  #Mod版专用 https://github.com/w2xg2022/lede4mod
+  REPO_URL: https://github.com/w2xg2022/lede9  #标准版 https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: .config
