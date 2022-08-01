@@ -11,7 +11,7 @@
 #
 
 # Modify default static IP
-#sed -i 's/192.168.1.1/192.168.1.24/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.1.25/g' package/base-files/files/bin/config_generate
 
 # Modify default hostname
-#sed -i 's/OpenWrt/WKN/g' package/base-files/files/bin/config_generate
+sed -i 's/OpenWrt/WKN_AX/g' package/base-files/files/bin/config_generate
