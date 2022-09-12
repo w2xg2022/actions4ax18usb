@@ -17,3 +17,4 @@
 #echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
 #echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
 #echo 'src-git nuexini https://github.com/NueXini/NueXini_Packages' >>feeds.conf.default
+echo 'src-git wpackages https://github.com/vpw2011/wpackages' >>feeds.conf.default
