@@ -41,7 +41,8 @@
 	src/gz openwrt_kiddin9 https://op.supes.top/packages/aarch64_cortex-a53/kiddin9
 	```
 
-可正常安装和运行的插件如下，其他请自行尝试；如果需要的插件确实无法顺利安装，请自行编译新的固件。
+
+3. 测试过可正常安装和运行的插件如下，其他请自行尝试；如果需要的插件确实无法顺利安装，请自行编译新的固件。
 
 	```bash
 	opkg update
