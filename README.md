@@ -1,44 +1,68 @@
-**English** | [中文](https://p3terx.com/archives/build-openwrt-with-github-actions.html)
+## 前言
 
-# Actions-OpenWrt
+1. 本仓库可实现https://github.com/w2xg2022/ax18usb的云编译，生成带USB驱动的和目AX18/兆能M2路由器固件。
+2. 代码修改自https://github.com/P3TERX/Actions-OpenWrt，特此感谢。
+3. 云编译的可调参数，请参考diy-part1.sh、diy-part2.sh。详细使用方式可参考https://p3terx.com/archives/build-openwrt-with-github-actions.html。
+4. 不想看那么多信息的，直接下载<a href="https://github.com/w2xg2022/actions4ax18usb/releases/download/2023.05.16-1844/openwrt-ipq60xx-generic-cmiot_ax18-squashfs-nand-factory.ubi">openwrt-ipq60xx-generic-cmiot_ax18-squashfs-nand-factory.ubi</a>，uboot刷入即可。
 
-[![LICENSE](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square&label=LICENSE)](https://github.com/P3TERX/Actions-OpenWrt/blob/master/LICENSE)
-![GitHub Stars](https://img.shields.io/github/stars/P3TERX/Actions-OpenWrt.svg?style=flat-square&label=Stars&logo=github)
-![GitHub Forks](https://img.shields.io/github/forks/P3TERX/Actions-OpenWrt.svg?style=flat-square&label=Forks&logo=github)
 
-A template for building OpenWrt with GitHub Actions
 
-## Usage
+## 默认信息
 
-- Click the [Use this template](https://github.com/P3TERX/Actions-OpenWrt/generate) button to create a new repository.
-- Generate `.config` files using [Lean's OpenWrt](https://github.com/coolsnowwolf/lede) source code. ( You can change it through environment variables in the workflow file. )
-- Push `.config` file to the GitHub repository.
-- Select `Build OpenWrt` on the Actions page.
-- Click the `Run workflow` button.
-- When the build is complete, click the `Artifacts` button in the upper right corner of the Actions page to download the binaries.
+1. 默认IP：192.168.1.1
+2. 默认管理员账号、密码：root、未设置密码
+3. 默认WIFI：OpenWrt，未设置密码
 
-## Tips
 
-- It may take a long time to create a `.config` file and build the OpenWrt firmware. Thus, before create repository to build your own firmware, you may check out if others have already built it which meet your needs by simply [search `Actions-Openwrt` in GitHub](https://github.com/search?q=Actions-openwrt).
-- Add some meta info of your built firmware (such as firmware architecture and installed packages) to your repository introduction, this will save others' time.
 
-## Credits
+## 插件清单
 
-- [Microsoft Azure](https://azure.microsoft.com)
-- [GitHub Actions](https://github.com/features/actions)
-- [OpenWrt](https://github.com/openwrt/openwrt)
-- [Lean's OpenWrt](https://github.com/coolsnowwolf/lede)
-- [tmate](https://github.com/tmate-io/tmate)
-- [mxschmitt/action-tmate](https://github.com/mxschmitt/action-tmate)
-- [csexton/debugger-action](https://github.com/csexton/debugger-action)
-- [Cowtransfer](https://cowtransfer.com)
-- [WeTransfer](https://wetransfer.com/)
-- [Mikubill/transfer](https://github.com/Mikubill/transfer)
-- [softprops/action-gh-release](https://github.com/softprops/action-gh-release)
-- [ActionsRML/delete-workflow-runs](https://github.com/ActionsRML/delete-workflow-runs)
-- [dev-drprasad/delete-older-releases](https://github.com/dev-drprasad/delete-older-releases)
-- [peter-evans/repository-dispatch](https://github.com/peter-evans/repository-dispatch)
+默认配置下的插件清单如下：
+<img src="pic_screenshot.gif" width=600  />
 
-## License
 
-[MIT](https://github.com/P3TERX/Actions-OpenWrt/blob/main/LICENSE) © [**P3TERX**](https://p3terx.com)
+
+## 软件源设置
+
+1. OPKG 基础配置
+
+	```bash
+	#option check_signature
+	```
+
+2. 发行版软件源
+
+	```bash
+	src/gz openwrt_core https://op.supes.top/targets/ipq60xx/generic/4.4.60
+	src/gz openwrt_base https://op.supes.top/packages/aarch64_cortex-a53/base
+	src/gz openwrt_packages https://op.supes.top/packages/aarch64_cortex-a53/packages
+	src/gz openwrt_luci https://op.supes.top/packages/aarch64_cortex-a53/luci
+	src/gz openwrt_routing https://op.supes.top/packages/aarch64_cortex-a53/routing
+	src/gz openwrt_kiddin9 https://op.supes.top/packages/aarch64_cortex-a53/kiddin9
+	```
+
+可正常安装和运行的插件如下，其他请自行尝试；如果需要的插件确实无法顺利安装，请自行编译新的固件。
+
+	```bash
+	opkg update
+	opkg install luci-app-onliner
+	opkg install coremark
+	opkg install luci-app-aliyundrive-webdav
+
+	#libnl-tiny1与libnl-tiny冲突，nodeps不安装依赖即可
+	opkg install luci-app-arpbind --nodeps
+	```
+
+
+## 已知问题
+
+1. TTYD终端如果无法连接，在系统->启动项 重启 即可。
+2. 无法支持所有U盘或外接移动硬盘，已知海力士PC711 512G外接RTL9210B移动硬盘盒，无法识别（blkid无法找到/dev/sda1）。【推荐使用FAT32格式】
+	
+
+
+## 打赏
+
+如果你觉得这个仓库、说明文档和固件等对你有帮助，能够激发和目AX18/兆能M2的潜能，欢迎通过微信打赏，谢谢。
+
+<img src="pic_star.jpg" width=300  />
