@@ -1,8 +1,8 @@
 ## 前言
 
-1. 本仓库可实现https://github.com/w2xg2022/ax18usb的云编译，生成带USB驱动的和目AX18/兆能M2路由器固件。
-2. 代码修改自https://github.com/P3TERX/Actions-OpenWrt，特此感谢。
-3. 云编译的可调参数，请参考diy-part1.sh、diy-part2.sh。详细使用方式可参考https://p3terx.com/archives/build-openwrt-with-github-actions.html。
+1. 本仓库可实现<a href="https://github.com/w2xg2022/ax18usb">https://github.com/w2xg2022/ax18usb</a>的云编译，生成带USB驱动的和目AX18/兆能M2路由器固件。
+2. 代码修改自<a href="https://github.com/P3TERX/Actions-OpenWrt">https://github.com/P3TERX/Actions-OpenWrt</a>，特此感谢。
+3. 云编译的可调参数，请参考diy-part1.sh、diy-part2.sh。详细使用方式可参考<a href="https://p3terx.com/archives/build-openwrt-with-github-actions.html">这里</a>。
 4. 不想看那么多信息的，直接下载<a href="https://github.com/w2xg2022/actions4ax18usb/releases/download/2023.05.16-1844/openwrt-ipq60xx-generic-cmiot_ax18-squashfs-nand-factory.ubi">openwrt-ipq60xx-generic-cmiot_ax18-squashfs-nand-factory.ubi</a>，uboot刷入即可。
 
 
@@ -18,7 +18,7 @@
 ## 插件清单
 
 默认配置下的插件清单如下：
-<img src="pic_screenshot.gif" width=600  />
+<img src="pic_screenshot.gif" width=720  />
 
 
 
@@ -48,6 +48,7 @@
 	opkg install luci-app-onliner
 	opkg install coremark
 	opkg install luci-app-aliyundrive-webdav
+
 
 	#libnl-tiny1与libnl-tiny冲突，nodeps不安装依赖即可
 	opkg install luci-app-arpbind --nodeps
