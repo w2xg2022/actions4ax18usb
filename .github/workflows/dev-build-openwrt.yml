@@ -81,7 +81,9 @@ jobs:
         svn co https://github.com/gl-inet-builder/qsdk11_feeds/trunk/package/kernel/linux
         cd linux/modules/
         rm -rf nls.mk
+        rm -rf netfilter.mk
         wget https://raw.githubusercontent.com/w2xg2022/ax18usb/main/package/kernel/linux/modules/nls.mk
+        wget https://raw.githubusercontent.com/w2xg2022/ax18usb/main/package/kernel/linux/modules/netfilter.mk
         cd ../../../..
         
         chmod -R 775 *
